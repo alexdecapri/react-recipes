@@ -13,7 +13,8 @@ class HomeContainer extends Component {
     super(props);
 
     this.state = {
-      recipes: []
+      recipes: [],
+      term: ''
     };
   }
 
@@ -23,7 +24,7 @@ class HomeContainer extends Component {
 
     return axios.post(url, {
       "key": key,
-      "q": "chicken"
+      "q": this.state.term
     })
       .then((response) => {
         console.log(response.data.recipes);
