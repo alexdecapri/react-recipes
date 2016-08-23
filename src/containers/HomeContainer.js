@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import SearchBar from '../components/search_bar';
-// import RecipeList from './recipe_list';
+import RecipeList from '../components/recipe_list';
 
 const API_KEY = '2bf85f602ad897ed67b5267d105df900';
 const ROOT_URL = 'https://food2-api.herokuapp.com/search';
 
 class HomeContainer extends Component {
+
   constructor(props) {
     super(props);
 
@@ -29,6 +30,7 @@ class HomeContainer extends Component {
         this.setState({
           recipes: response.data.recipes
         })
+        console.log('this.state.recipes', this.state.recipes);
       })
   }
 
@@ -37,9 +39,7 @@ class HomeContainer extends Component {
       <div>
         <h2>React Recipes</h2>
         <SearchBar />
-        <div>
-          {this.state.recipes.title}
-        </div>
+        <RecipeList recipes={this.state.recipes}/>
       </div>
     )
   }

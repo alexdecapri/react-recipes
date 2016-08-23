@@ -1,27 +1,7 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-//
-// const API_KEY = '2bf85f602ad897ed67b5267d105df900';
-// const ROOT_URL = 'https://food2-api.herokuapp.com/search';
-
-// function fetchRecipes(food) {
-//   const url = ROOT_URL;
-//   const key = API_KEY;
-//   // const food = this.state.term;
-//
-//   return axios.post(url, {
-//     "key": key,
-//     "q": food
-//   })
-//     .then(function(response) {
-//       console.log(response.data.recipes);
-//       this.setState({
-//         recipes: response.data.recipes
-//       })
-//     })
-// }
 
 class SearchBar extends Component {
+  
   constructor(props) {
     super(props);
 
