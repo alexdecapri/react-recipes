@@ -7,7 +7,7 @@ const RecipeListItem = (props) => {
     <li className="list-group-item">
       <div className="media">
         <div className="media-left">
-          <img className="media-object" src={recipe.image_url} />
+          <img className="media-object" src={recipe.image_url} role="presentation"/>
         </div>
         <div className="media-body">
           <div className="media-heading">{recipe.title}</div>
