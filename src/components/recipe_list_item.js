@@ -11,7 +11,7 @@ const RecipeListItem = (props) => {
         </div>
         <div className="media-body">
           <div className="media-heading">{recipe.title}</div>
-          <h5><a href={recipe.publisher_url}>{recipe.publisher}</a></h5>
+          <h5><a href={recipe.publisher_url} target="_blank">{recipe.publisher}</a></h5>
         </div>
       </div>
     </li>
