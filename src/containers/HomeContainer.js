@@ -17,7 +17,7 @@ class HomeContainer extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const url = ROOT_URL;
     const key = API_KEY;
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const RecipeListItem = (props) => {
   const recipe = props.recipe;
@@ -10,7 +11,9 @@ const RecipeListItem = (props) => {
           <img className="media-object" src={recipe.image_url} role="presentation"/>
         </div>
         <div className="media-body">
-          <div className="media-heading">{recipe.title}</div>
+          <Link to={`/recipes/${recipe.recipe_id}`}>
+            <div className="media-heading">{recipe.title}</div>
+          </Link>
           <h5><a href={recipe.publisher_url} target="_blank">{recipe.publisher}</a></h5>
         </div>
       </div>
