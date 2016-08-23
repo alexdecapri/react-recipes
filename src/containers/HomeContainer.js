@@ -1,14 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 
 import SearchBar from '../components/search_bar';
+// import RecipeList from './recipe_list';
 
-const HomeContainer = () => {
-  return (
-    <div>
-      <h2>React Recipes</h2>
-      <SearchBar />
-    </div>
-  )
+const API_KEY = '2bf85f602ad897ed67b5267d105df900';
+const ROOT_URL = 'https://food2-api.herokuapp.com/search';
+
+class HomeContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      recipes: []
+    };
+  }
+
+  componentDidMount() {
+    const url = ROOT_URL;
+    const key = API_KEY;
+
+    return axios.post(url, {
+      "key": key,
+      "q": "chicken"
+    })
+      .then((response) => {
+        console.log(response.data.recipes);
+        this.setState({
+          recipes: response.data.recipes
+        })
+      })
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>React Recipes</h2>
+        <SearchBar />
+        <div>
+          {this.state.recipes.title}
+        </div>
+      </div>
+    )
+  }
 }
 
 export default HomeContainer;
