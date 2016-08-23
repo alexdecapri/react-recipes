@@ -34,11 +34,36 @@ class HomeContainer extends Component {
       })
   }
 
+  handleSearch() {
+    const url = ROOT_URL;
+    const key = API_KEY;
+
+    return axios.post(url, {
+      "key": key,
+      "q": this.state.term
+    })
+      .then((response) => {
+        console.log(response.data.recipes);
+        this.setState({
+          recipes: response.data.recipes
+        })
+      })
+  }
+
+  handleInputChange(event) {
+    this.setState({
+      term: event.target.value
+    })
+  }
+
   render() {
     return (
       <div>
         <h2 className="text-center">React Recipes</h2>
-        <SearchBar />
+        <SearchBar
+          term={this.state.term}
+          onSearch={this.handleSearch.bind(this)}
+          onInputChange={this.handleInputChange.bind(this)} />
         <RecipeList recipes={this.state.recipes}/>
       </div>
     )
