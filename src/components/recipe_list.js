@@ -10,7 +10,7 @@ const RecipeList = (props) => {
   });
 
   return (
-    <ul className="col-md-4 list-group">
+    <ul className="col-sm-8 col-sm-offset-2 list-group">
       {recipeItems}
     </ul>
   )

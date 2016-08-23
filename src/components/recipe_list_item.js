@@ -6,7 +6,13 @@ const RecipeListItem = (props) => {
   return (
     <li className="list-group-item">
       <div className="media">
-        <img className="media-object" src={recipe.image_url} />
+        <div className="media-left">
+          <img className="media-object" src={recipe.image_url} />
+        </div>
+        <div className="media-body">
+          <div className="media-heading">{recipe.title}</div>
+          <h5><a href={recipe.publisher_url}>{recipe.publisher}</a></h5>
+        </div>
       </div>
     </li>
   );

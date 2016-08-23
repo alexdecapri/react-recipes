@@ -36,7 +36,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <div>
-        <h2>React Recipes</h2>
+        <h2 className="text-center">React Recipes</h2>
         <SearchBar />
         <RecipeList recipes={this.state.recipes}/>
       </div>

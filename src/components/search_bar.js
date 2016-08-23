@@ -21,8 +21,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
-
+      <div className="search-bar col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <div className="input-group">
           <input
             onChange={this.onInputChange.bind(this)}
@@ -37,10 +36,6 @@ class SearchBar extends Component {
               onClick={this.onButtonSubmit.bind(this)}>Search</button>
           </span>
         </div>
-
-        <div>Value of the input: {this.state.term}</div>
-
-
       </div>
 
     )
