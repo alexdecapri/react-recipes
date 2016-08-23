@@ -30,7 +30,6 @@ class HomeContainer extends Component {
         this.setState({
           recipes: response.data.recipes
         })
-        console.log('this.state.recipes', this.state.recipes);
       })
   }
 
