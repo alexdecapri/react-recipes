@@ -1,9 +1,31 @@
 import React from 'react';
 
-const SingleRecipeContainer = () => {
-  return (
-    <div>Single Recipe Container</div>
-  )
-}
+export default class SingleRecipeContainer extends React.Component {
+    constructor(props, context) {
+      super(props, context);
 
-export default SingleRecipeContainer;
+      this.state = {
+        loading: true
+      };
+    }
+
+    componentWillMount() {
+      const store = this.props.store.getRecipeStore();
+      store.retrieveSelectedDetails(this.props.params.id)
+        .then((response) => {
+          this.state.loading = false;
+          this.state.data = response.data.recipe.ingredients;
+        });
+    }
+
+    render() {
+      return (
+        <div>
+          {this.state.loading
+            ? <div>Loading</div>
+            : <div>{this.state.data[0]}</div>
+          }
+        </div>
+      )
+    }
+}

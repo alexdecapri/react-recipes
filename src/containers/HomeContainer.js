@@ -12,42 +12,43 @@ class HomeContainer extends Component {
   constructor(props) {
     super(props);
 
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleItemClick = this.handleItemClick.bind(this);
     this.state = {
-      recipes: [],
       term: ''
     };
   }
 
   componentWillMount() {
-    const url = ROOT_URL;
-    const key = API_KEY;
-
-    return axios.post(url, {
-      "key": key,
-      "q": this.state.term
-    })
-      .then((response) => {
-        console.log(response.data.recipes);
-        this.setState({
-          recipes: response.data.recipes
-        })
-      })
+    // const url = ROOT_URL;
+    // const key = API_KEY;
+    //
+    // return axios.post(url, {
+    //   "key": key,
+    //   "q": this.state.term
+    // })
+    //   .then((response) => {
+    //     console.log(response.data.recipes);
+    //     this.setState({
+    //       recipes: response.data.recipes
+    //     })
+    //   })
   }
 
   handleSearch() {
-    const url = ROOT_URL;
-    const key = API_KEY;
-
-    return axios.post(url, {
-      "key": key,
-      "q": this.state.term
-    })
-      .then((response) => {
-        console.log(response.data.recipes);
-        this.setState({
-          recipes: response.data.recipes
-        })
-      })
+    // const url = ROOT_URL;
+    // const key = API_KEY;
+    //
+    // return axios.post(url, {
+    //   "key": key,
+    //   "q": this.state.term
+    // })
+    //   .then((response) => {
+    //     console.log(response.data.recipes);
+    //     this.setState({
+    //       recipes: response.data.recipes
+    //     })
+    //   })
   }
 
   handleInputChange(event) {
@@ -56,15 +57,27 @@ class HomeContainer extends Component {
     })
   }
 
+  handleItemClick(rId) {
+    const store = this.props.store.getRecipeStore();
+
+    store.select(rId);
+  }
+
   render() {
+    const store = this.props.store.getRecipeStore();
+
+
     return (
       <div>
         <h2 className="text-center">React Recipes</h2>
         <SearchBar
           term={this.state.term}
           onSearch={this.handleSearch.bind(this)}
-          onInputChange={this.handleInputChange.bind(this)} />
-        <RecipeList recipes={this.state.recipes}/>
+          onInputChange={this.handleInputChange} />
+        <RecipeList
+          store={this.props.store}
+          recipes={store.get()}
+          onItemClicked={this.handleItemClick}/>
       </div>
     )
   }

@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const RecipeListItem = (props) => {
-  const recipe = props.recipe;
-
+const RecipeListItem = ({ recipe, onItemClicked }) => {
   return (
     <li className="list-group-item">
       <div className="media">
         <div className="media-left">
-          <img className="media-object" src={recipe.image_url} role="presentation"/>
+          <img className="media-object" onClick={onItemClicked} src={recipe.image_url} role="presentation"/>
         </div>
         <div className="media-body">
           <Link to={`/recipes/${recipe.recipe_id}`}>

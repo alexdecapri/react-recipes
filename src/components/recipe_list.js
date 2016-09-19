@@ -2,11 +2,18 @@ import React from 'react';
 import RecipeListItem from './recipe_list_item';
 
 const RecipeList = (props) => {
-  const recipeItems = props.recipes.map((recipe) => {
-    return <RecipeListItem
-      recipe={recipe}
-      key={recipe.recipe_id} />
-  });
+
+  let recipeItems;
+  if (props.recipes) {
+    recipeItems = props.recipes.map((recipe) => (
+      <RecipeListItem
+        recipe={recipe}
+        key={recipe.recipe_id}
+        onItemClicked={() => props.onItemClicked(recipe.recipe_id)}/>
+      ));
+  } else {
+    recipeItems = [];
+  }
 
   return (
     <ul className="col-sm-8 col-sm-offset-2 list-group">
